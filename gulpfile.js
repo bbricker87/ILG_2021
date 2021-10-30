@@ -1,43 +1,54 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var cleancss = require('gulp-clean-css');
-var csscomb = require('gulp-csscomb');
-var rename = require('gulp-rename');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
+const sassdoc = require('sassdoc');
 
-// configure the paths
-var watch_dir = './scss/**/*.scss';
-var src_dir = './scss/*.scss';
-var dest_dir = './css-compiled';
-
-var paths = {
-    source: src_dir
+var input = 'user/themes/fbc_2020/scss/**/*.scss';
+var output = 'user/themes/fbc_2020/css/';
+var sassOptions = {
+  errLogToConsole: true,
+  outputStyle: 'expanded'
 };
+var autoprefixerOptions = {
+  browsers: ['last 2 versions', '>5%', 'Firefox ESR']
+};
+var sassdocOptions = {
+  dest: 'user/themes/fbc_2020'
+}
 
+gulp.task('sass', function () {
+  return gulp
+    .src(input)
+    .pipe(sourcemaps.init())
+    .pipe(sass(sassOptions)).on('error', sass.logError)
+    .pipe(sourcemaps.write())
+    .pipe(autoprefixer(autoprefixerOptions))
+    .pipe(gulp.dest(output))
+  // .pipe(sassdoc(sassdocOptions))
+  // .resume()
+});
+
+//Default task
+gulp.task('default', ['sass', 'watch']);
+
+//Watch task
 function watch() {
-  return gulp.watch(watch_dir, build);
+  watch(input, sass())
+    .on('change', function (event) {
+      console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    });
 }
 
-function build() {
-  return gulp.src(paths.source)
-      .pipe(sourcemaps.init())
-      .pipe(sass({
-            outputStyle: 'compact',
-            precision: 10
-          }).on('error', sass.logError)
-      )
-      .pipe(sourcemaps.write())
-      .pipe(autoprefixer())
-      .pipe(gulp.dest(dest_dir))
-      .pipe(csscomb())
-      .pipe(cleancss())
-      .pipe(rename({
-        suffix: '.min'
-      }))
-      .pipe(gulp.dest(dest_dir));
-}
+// Production Build
+gulp.task('prod', function () {
+  return gulp
+    .src(input)
+    .pipe(sass({
+      outputStyle: 'compressed'
+    }))
+    .pipe(autoprefixer(autoprefixerOptions))
+    .pipe(gulp.dest(output));
+});
 
-exports.watch = watch;
-exports.build = build;
-exports.default = build;
+exports.watch =
