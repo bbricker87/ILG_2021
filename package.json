@@ -1,0 +1,19 @@
+{
+  "name": "ilg_2021",
+  "version": "1.0.0",
+  "description": "Responsive, lightweight theme for Industry Liaison Websites",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fast",
+    "responsive",
+    "lightweight",
+    "css3",
+    "html5",
+    "bulma"
+  ],
+  "author": "Ben Bricker",
+  "license": "ISC"
+}
