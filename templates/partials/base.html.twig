@@ -24,9 +24,7 @@
 	</head>
 	<body id="top" class="{{ page.header.body_classes }}">
 		{% block header %}
-			<header id='header'>
-				{% include 'partials/navigation.html.twig' %}
-			</header>
+			{% include 'partials/header.html.twig' %}
 		{% endblock %}
 
 		{% block body %}
@@ -36,47 +34,7 @@
 		{% endblock %}
 
 		{% block footer %}
-			<footer id='site-footer'>
-				<div id='footer-container' class='footer'>
-					<div class='footer__section footer__section--copyright'>
-						<span>©
-							{{ 'now' | date('Y') }}
-							| First Baptist Church of Massillon | (330) 832-1234</span>
-					</div>
-					<div class='footer__section footer__section--contact'>
-						<ul class='footer__section__links social-links'>
-							{% if config.site.facebook %}
-								<li class='social-links__item'>
-									<a href='{{config.site.facebook}}' target='_blank'>
-										<i class='fab fa-facebook'></i>
-									</a>
-								</li>
-							{% endif %}
-							{% if config.site.instagram %}
-								<li class='social-links__item'>
-									<a href='{{config.site.instagram}}' target='_blank'>
-										<i class='fab fa-instagram'></i>
-									</a>
-								</li>
-							{% endif %}
-							{% if config.site.youtube %}
-								<li class='social-links__item'>
-									<a href='{{config.site.youtube}}' target='_blank'>
-										<i class='fab fa-youtube'></i>
-									</a>
-								</li>
-							{% endif %}
-							{% if config.site.email %}
-								<li class='social-links__item'>
-									<a href='mailto:{{config.site.email}}' target='_blank'>
-										<i class='fas fa-at'></i>
-									</a>
-								</li>
-							{% endif %}
-						</ul>
-					</div>
-				</div>
-			</footer>
+			<footer id='site-footer'></footer>
 		{% endblock %}
 		{% block bottom %}
 			{% do assets.addJs('theme://js/base.js', {'priority': 100, 'loading':'defer', 'group':'bottom'}) %}

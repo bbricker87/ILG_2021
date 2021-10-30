@@ -1,6 +1,58 @@
-{% import 'macros/macros.html.twig' as macros %}
+{% macro nav_item(p, level) %}
+	{% set current_page = (p.active or p.activeChild) ? 'nav__item--active' : '' %}
+	{% set next_level = level + 1 %}
+	{% set page_target = p.redirect ? '_blank' : '_self' %}
+	{% if p.children.visible.count > 0 and level < 1 %}
+		<li class="nav__item nav__item--has-children {{ current_page }}">
+			<a href="{{ p.url }}" target="{{ page_target }}">
+				{{ p.menu }}
+			</a>
+			<ul class="nav__item__submenu dropdown">
+				{{ _self.loop(p, next_level) }}
+			</ul>
+		</li>
+	{% else %}
+		<li class="nav__item {{ current_page }}">
+			<a href="{{ p.url }}" target="{{ page_target }}">
+				{{ p.menu }}
+			</a>
+		</li>
+	{% endif %}
+{% endmacro %}
 
-<ul {{ tree ? 'class="tree"' : '' }}>
-    {{ macros.nav_loop(pages) }}
-</ul>
+{% macro loop(page, level) %}
+	{% for p in page.children.visible %}
+		{{ _self.nav_item(p, level) }}
+	{% endfor %}
+{% endmacro %}
 
+<nav id='nav-menu' class='hidden-sm-and-down'>
+	<div class="nav__logo">
+		<a href="{{ base_url == '' ? '/' : base_url }}"></a>
+	</div>
+	<ul id='nav-items' class='nav'>
+		{% for p in pages.children.visible %}
+			{% if (loop.index > loop.length / 2) %}
+				{{ _self.nav_item(p, 0) }}
+			{% endif %}
+		{% endfor %}
+	</ul>
+</nav>
+
+<nav id='mobile-nav-menu' class='hidden-md-and-up'>
+	<div class="nav__logo">
+		<a href="/"></a>
+	</div>
+	<div id='menu-toggle' class='menu-toggle'>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<div class='nav-container'>
+		<ul class='nav'>
+			{% for p in pages.children.visible %}
+				{{ _self.nav_item(p) }}
+			{% endfor %}
+		</li>
+	</ul>
+</div></nav>
