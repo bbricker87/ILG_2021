@@ -16,9 +16,12 @@
 			<link rel="canonical" href="{{ page.url(true, true) }}"/>
 
 			{% block stylesheets %}
-				{% do assets.addCss('theme://css/style.css') %}
+				{% do assets.addCss('theme://css/ilg_2021_theme.css') %}
 			{% endblock %}
-			{{ assets.css() }}
+
+			{% block assets deferred %}
+				{{assets.css()|raw}}
+			{% endblock %}
 
 		{% endblock head %}
 	</head>
@@ -34,7 +37,24 @@
 		{% endblock %}
 
 		{% block footer %}
-			<footer id='site-footer'></footer>
+			<footer id='site-footer'>
+				<section id='upper-footer' class='container is-fullhd'>
+					<div id='footer-disclaimer'>
+						<h5>Disclaimer</h5>
+						<p>
+							The information contained on this website is for informational purposes only and is not intended to provide legal or other advice. Visitors to this site should consult legal counsel of their own choosing to determine how the information on this site relates to their individual circumstances and how to utilize the information, if at all. The views and opinions expressed by the
+							{{ ilg_name }}
+							({{ ilg_acronym }}) on this site do not necessarily reflect those of individual
+							{{ ilg_acronym }}
+							Board Members or their respective employers. This site contains links to other Websites.
+							{{ ilg_acronym }}
+							is not responsible for and did not contribute to the information or opinions expressed on those Websites.
+						</p>
+					</div>
+					<div id='footer-contact'></div>
+				</section>
+				<section id='lower-footer' class='container is-fullhd'></section>
+			</footer>
 		{% endblock %}
 		{% block bottom %}
 			{% do assets.addJs('theme://js/base.js', {'priority': 100, 'loading':'defer', 'group':'bottom'}) %}

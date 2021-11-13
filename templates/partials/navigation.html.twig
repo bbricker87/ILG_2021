@@ -1,18 +1,18 @@
 {% macro nav_item(p, level) %}
-	{% set current_page = (p.active or p.activeChild) ? 'nav__item--active' : '' %}
+	{% set current_page = (p.active or p.activeChild) ? 'is-active' : '' %}
 	{% set next_level = level + 1 %}
 	{% set page_target = p.redirect ? '_blank' : '_self' %}
 	{% if p.children.visible.count > 0 and level < 1 %}
-		<li class="nav__item nav__item--has-children {{ current_page }}">
-			<a href="{{ p.url }}" target="{{ page_target }}">
+		<li class="navbar-item has-dropdown is-hoverable {{ current_page }}">
+			<a href="{{ p.url }}" target="{{ page_target }}" class='navbar-link'>
 				{{ p.menu }}
 			</a>
-			<ul class="nav__item__submenu dropdown">
+			<ul class="navbar-dropdown is-right">
 				{{ _self.loop(p, next_level) }}
 			</ul>
 		</li>
 	{% else %}
-		<li class="nav__item {{ current_page }}">
+		<li class="navbar-item {{ current_page }}">
 			<a href="{{ p.url }}" target="{{ page_target }}">
 				{{ p.menu }}
 			</a>
@@ -26,33 +26,10 @@
 	{% endfor %}
 {% endmacro %}
 
-<nav id='nav-menu' class='hidden-sm-and-down'>
-	<div class="nav__logo">
-		<a href="{{ base_url == '' ? '/' : base_url }}"></a>
-	</div>
-	<ul id='nav-items' class='nav'>
+<nav id='nav-menu' class='navbar-menu'>
+	<ul id='nav-items' class='navbar-start'>
 		{% for p in pages.children.visible %}
-			{% if (loop.index > loop.length / 2) %}
-				{{ _self.nav_item(p, 0) }}
-			{% endif %}
+			{{ _self.nav_item(p, 0) }}
 		{% endfor %}
 	</ul>
 </nav>
-
-<nav id='mobile-nav-menu' class='hidden-md-and-up'>
-	<div class="nav__logo">
-		<a href="/"></a>
-	</div>
-	<div id='menu-toggle' class='menu-toggle'>
-		<span></span>
-		<span></span>
-		<span></span>
-	</div>
-	<div class='nav-container'>
-		<ul class='nav'>
-			{% for p in pages.children.visible %}
-				{{ _self.nav_item(p) }}
-			{% endfor %}
-		</li>
-	</ul>
-</div></nav>
