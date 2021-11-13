@@ -1,0 +1,61 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set hero_classes = page.header.mission_statement_background ? 'has-image' : '' %}
+
+{% block content %}
+	<section class="hero is-medium is-info {{hero_classes}}">
+		{% if page.header.mission_statement_background %}
+			<div class='hero-image' style="background-image: url({{page.header.mission_statement_background|first.path}});"></div>
+		{% endif %}
+		<div class="hero-body">
+			<p class="title">
+				{{ site.title }}
+				Mission
+			</p>
+			<p class="subtitle">
+				{{ page.header.mission_statement}}
+			</p>
+		</div>
+	</section>
+	<section class="section" id="board-members-section">
+		<div class='container'>
+			<h1 class="title has-text-centered">Board Members</h1>
+			<div class="board-members">
+				{% for member in page.header.board_members %}
+					<div class="card board-member">
+						<div class="card-image">
+							<figure class="image is-square">
+								<img src="/{{member.image|first.path}}" alt="{{ member.title }}"/>
+							</figure>
+						</div>
+						<div class="card-content">
+							<div class="media">
+								<div class="media-content">
+									<p class="title is-4">{{ member.name }}</p>
+									<p class="subtitle is-6">{{ member.title }}</p>
+								</div>
+							</div>
+
+							{% if member.excerpt %}
+								<div class="content">
+									{{ member.excerpt }}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+		<section class="section is-medium">
+			<div class='container'>
+				<h1 class="title is-2 has-text-centered">Membership</h1>
+				<div class='columns is-centered'>
+					<div class='column is-two-thirds-tablet is-half-desktop'>The Ohio Industry Liaison Group is a voluntary coalition of more than 100 representatives from organizations of all sizes and industries. This group was established to provide an open forum for members to exchange information and ideas between themselves and with OFCCP representatives, who also attend a portion of each meeting. Membership is $75 per year (individual) or $150 per year (per company), plus a minimal cost per meeting for lunch. An additional $10 is charged for memberships renewed after February 13th. Meetings are held in February, May, August, and November in the Columbus area.</div>
+				</div>
+				<div class="columns is-centered">
+					<div class='column is-one-half-tablet is-one-third-desktop'>
+						<div class="button is-primary is-fullwidth">Join</div>
+					</div>
+				</div>
+			</section>
+		{% endblock %}

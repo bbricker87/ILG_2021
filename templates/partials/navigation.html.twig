@@ -1,5 +1,5 @@
 {% macro nav_item(p, level) %}
-	{% set current_page = (p.active or p.activeChild) ? 'is-active' : '' %}
+	{% set current_page = (p.active or p.activeChild) ? 'active' : '' %}
 	{% set next_level = level + 1 %}
 	{% set page_target = p.redirect ? '_blank' : '_self' %}
 	{% if p.children.visible.count > 0 and level < 1 %}

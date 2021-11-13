@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
-const { series, src, dest } = require('gulp');
+const { series, src, dest, watch } = require('gulp');
 
 var input = './scss/**/*.scss';
 var output = './css/';
@@ -23,7 +23,7 @@ function compileSass() {
 };
 
 //Watch task
-function watch() {
+function watchSass() {
   watch(input, compileSass)
     .on('change', function (event) {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -31,4 +31,4 @@ function watch() {
 }
 
 exports.build = compileSass;
-exports.default = series(compileSass, watch);
+exports.default = series(compileSass, watchSass);

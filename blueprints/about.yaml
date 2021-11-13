@@ -1,1 +1,54 @@
 extends@: default
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        content:
+          fields:
+
+            about_options:
+              type: section
+              title: About Options
+              underline: true
+
+            header.mission_statement:
+              type: textarea
+              label: Mission Statement
+              help: Mission statement for the organization
+
+            header.mission_statement_background:
+              type: file
+              toggleable: true
+              label: Mission Statement Background
+              help: Image to display behind the mission statement
+              destination: 'user/themes/ilg_2021/assets/images/about/'
+              multiple: false
+              limit: 1
+              accept:
+                - image/*
+
+            header.board_members:
+              type: list
+              style: vertical
+              label: Board Members
+              fields:
+                .name:
+                  type: text
+                  label: Member Name
+                .title:
+                  type: text
+                  label: Member Title
+                .excerpt:
+                  type: textarea
+                  label: Member excerpt
+                  toggleable: true
+                .image:
+                  type: file
+                  label: Member Image
+                  destination: 'user/themes/ilg_2021/assets/images/about/member_images/'
+                  multiple: false
+                  limit: 1
+                  accept:
+                    - image/*
