@@ -1,5 +1,6 @@
 {% set is_full_or_half = page.header.hero_size == 'is-halfheight' or page.header.hero_size == 'is-fullheight' %}
-<section class="hero {{page.header.hero_size}}">
+{% set has_image = page.header.hero_image ? 'has-image' : '' %}
+<section class="hero is-info {{page.header.hero_size}} {{has_image}}">
 	{% if page.header.hero_image %}
 		<div class='hero-image' style="background-image: url({{page.header.hero_image|first.path}});"></div>
 	{% endif %}
