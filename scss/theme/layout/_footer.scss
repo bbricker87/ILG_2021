@@ -1,0 +1,21 @@
+#upper-footer {
+    background-color: #2C3C5E;
+    color: #fff;
+
+    & #footer-disclaimer {
+        font-size: 0.875rem;
+        color: #fff;
+
+        &>.title {
+            color: #fff;
+        }
+    }
+
+    & #footer-contact {
+        color: #fff;
+
+        &>.title {
+            color: #fff;
+        }
+    }
+}

@@ -1,4 +1,10 @@
 {% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+{% set ilg_name = theme_var('ilg_name') %}
+{% set ilg_acronym = theme_var('ilg_acronym') %}
+{% set contact_name = theme_var('contact_name') %}
+{% set contact_title = theme_var('contact_title') %}
+{% set contact_phone = theme_var('contact_phone') %}
+{% set contact_email = theme_var('contact_email') %}
 <!DOCTYPE html>
 <html lang="{{ grav.language.getLanguage ?: 'en' }}">
 	<head>
@@ -38,20 +44,36 @@
 
 		{% block footer %}
 			<footer id='site-footer'>
-				<section id='upper-footer' class='container is-fullhd'>
-					<div id='footer-disclaimer'>
-						<h5>Disclaimer</h5>
-						<p>
-							The information contained on this website is for informational purposes only and is not intended to provide legal or other advice. Visitors to this site should consult legal counsel of their own choosing to determine how the information on this site relates to their individual circumstances and how to utilize the information, if at all. The views and opinions expressed by the
-							{{ ilg_name }}
-							({{ ilg_acronym }}) on this site do not necessarily reflect those of individual
-							{{ ilg_acronym }}
-							Board Members or their respective employers. This site contains links to other Websites.
-							{{ ilg_acronym }}
-							is not responsible for and did not contribute to the information or opinions expressed on those Websites.
-						</p>
+				<section id='upper-footer' class='section is-fullhd'>
+					<div class='container'>
+						<div class='columns'>
+							<div id='footer-disclaimer' class='column is-two-thirds'>
+								<h5 class='title is-5'>Disclaimer</h5>
+								<p>
+									The information contained on this website is for informational purposes only and is not intended to provide legal or other advice. Visitors to this site should consult legal counsel of their own choosing to determine how the information on this site relates to their individual circumstances and how to utilize the information, if at all. The views and opinions expressed by the
+									{{ ilg_name }}
+									({{ ilg_acronym }}) on this site do not necessarily reflect those of individual
+									{{ ilg_acronym }}
+									Board Members or their respective employers. This site contains links to other Websites.
+									{{ ilg_acronym }}
+									is not responsible for and did not contribute to the information or opinions expressed on those Websites.
+								</p>
+							</div>
+							<div id='footer-contact' class='column is-centered'>
+								<h5 class='title is-5'>Contact</h5>
+								<p>{{ contact_name }}</p>
+								<p>{{ contact_title }}</p>
+								{% if contact_phone %}
+									<p>{{ contact_phone }}</p>
+								{% endif %}
+								{% if contact_email %}
+									<p>
+										<a href='mailto:{{ contact_email }}' alt='{{ contact_name }} email'>{{ contact_email }}</a>
+									</p>
+								{% endif %}
+							</div>
+						</div>
 					</div>
-					<div id='footer-contact'></div>
 				</section>
 				<section id='lower-footer' class='container is-fullhd'></section>
 			</footer>

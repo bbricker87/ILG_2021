@@ -3,20 +3,7 @@
 {% set hero_classes = page.header.mission_statement_background ? 'has-image' : '' %}
 
 {% block content %}
-	<section class="hero is-medium is-info {{hero_classes}}">
-		{% if page.header.mission_statement_background %}
-			<div class='hero-image' style="background-image: url({{page.header.mission_statement_background|first.path}});"></div>
-		{% endif %}
-		<div class="hero-body">
-			<p class="title">
-				{{ site.title }}
-				Mission
-			</p>
-			<p class="subtitle">
-				{{ page.header.mission_statement}}
-			</p>
-		</div>
-	</section>
+	{% include 'partials/page-header.html.twig' %}
 	<section class="section" id="board-members-section">
 		<div class='container'>
 			<h1 class="title has-text-centered">Board Members</h1>

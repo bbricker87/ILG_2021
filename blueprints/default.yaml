@@ -4,12 +4,52 @@ form:
   fields:
     tabs:
       fields:
-        advanced:
+        content:
           fields:
-            columns:
-              fields:
-                column1:
-                   fields:
-                     header.body_classes:
-                       markdown: true
-                       description: 'Available classes in Quark Theme (space separated):<br />`header-fixed`, `header-animated`, `header-dark`, `header-transparent`, `sticky-footer`'
+            
+            header.use_hero:
+              type: toggle
+              label: Use hero section
+              highlight: 1
+              help: Use hero section at the top of the page
+              options:
+                  1: PLUGIN_ADMIN.YES
+                  0: PLUGIN_ADMIN.NO
+              validate:
+                  type: bool
+
+            header.hero_title:
+              type: text
+              label: Hero title
+              help: Title in the hero section
+
+            header.hero_text:
+              type: textarea
+              label: Hero text
+              help: Text to be displayed in the hero section
+            
+            header.hero_image:
+              type: file
+              toggleable: true
+              label: Hero background image
+              help: Image to display as the hero background
+              destination: 'user/themes/ilg_2021/assets/images/hero_images'
+              multiple: false
+              limit: 1
+              accept:
+                - image/*
+
+            header.hero_size:
+              type: select
+              size: long
+              toggleable: true
+              label: Hero size
+              help: Text to be displayed in the hero section
+              default: default
+              options:
+                  default: 'Default - normal padding'
+                  is-small: 'Small - small padding'
+                  is-medium: 'Medium - medium padding'
+                  is-large: 'Large - large padding'
+                  is-halfheight: 'Half - half height of the page'
+                  is-fullheight: 'Full - full height of the page'

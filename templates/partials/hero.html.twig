@@ -1,7 +1,25 @@
-<section id="{{ id }}" class="section modular-hero hero {{ page.header.hero_classes }} {{ page.header.background.parallax ? 'parallax' : '' }}" {% if hero_image %}style="background-image: url('{{ hero_image.url }}');"{% endif %}>
-    <div class="image-overlay"></div>
-    <section class="container {{ grid_size }}" style="text-align: {{ page.header.hero_align|default('center') }}">
-        {{ content|raw }}
-    </section>
-    <i id="to-start" class="pulse fa fa-angle-down"></i>
+{% set is_full_or_half = page.header.hero_size == 'is-halfheight' or page.header.hero_size == 'is-fullheight' %}
+<section class="hero {{page.header.hero_size}}">
+	{% if page.header.hero_image %}
+		<div class='hero-image' style="background-image: url({{page.header.hero_image|first.path}});"></div>
+	{% endif %}
+	<div class="hero-body">
+		{% if is_full_or_half %}
+			<div class=''>
+				<p class="title">
+					{{ page.header.hero_title }}
+				</p>
+				<p class="subtitle">
+					{{ page.header.hero_text}}
+				</p>
+			</div>
+		{% else %}
+			<p class="title">
+				{{ page.header.hero_title }}
+			</p>
+			<p class="subtitle">
+				{{ page.header.hero_text}}
+			</p>
+		{% endif %}
+	</div>
 </section>

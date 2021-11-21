@@ -22,6 +22,28 @@ form:
       label: ILG Acronym
       help: Acronym for the ILG using the theme. OHILG for example
 
+    contact_name:
+      type: text
+      label: Contact Name
+      help: Name of ILG member to contact for questions
+
+    contact_title:
+      type: text
+      label: Contact Title
+      help: Title of ILG member to contact
+      
+    contact_tel:
+      type: text
+      label: Contact Phone
+      toggleable: true
+      help: Phone number to contact ILG Member
+
+    contact_email:
+      type: email
+      label: Contact Email
+      toggleable: true
+      help: Email to contact ILG Member
+
     production-mode:
       type: toggle
       label: Production mode

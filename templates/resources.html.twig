@@ -1,0 +1,29 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+	<section class="section">
+		<div class='container'>
+			<h1 class='title is-2'>Resources</h1>
+			<div class='columns is-multiline' id='agencies'>
+				<div class='column is-full'>
+					<h4 class='title is-4'>Agencies</h4>
+				</div>
+				{% for agency in page.header.agencies %}
+					<div class='agency column is-half-tablet is-one-third-desktop is-one-quarter-fullhd'>
+						<a href='{{agency.url}}' alt='{{agency.title}}' target='_blank'>{{agency.title}}</a>
+					</div>
+				{% endfor %}
+			</div>
+			<div class='columns is-multiline' id='links'>
+				<div class='column is-full'>
+					<h4 class='title is-4'>Links</h4>
+				</div>
+				{% for resource_link in page.header.links %}
+					<div class='column is-half-tablet is-one-third-desktop is-one-quarter-fullhd'>
+						<a href='{{resource_link.url}}' alt='{{resource_link.title}}' target='_blank'>{{resource_link.title}}</a>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}
