@@ -1,0 +1,70 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+	{% include 'partials/page-header.html.twig' %}
+	<section class="section is-medium" id='events-section'>
+		<div class='container'>
+			<div class='columns is-multiline' id='events'>
+				<div class='column is-full'>
+					<h4 class='title is-4'>Upcoming Events</h4>
+				</div>
+				<ul class='events columns'>
+					{% for event in page.header.events %}
+						{% set event_time = event.start | date("g:ia") ~ ' - ' ~ event.end | date("g:ia") %}
+						<li class='column'>
+							<div class='card event'>
+								<header class='card-header'>
+									<p class='event-date card-header-title'>{{event.start | date("F d, Y")}}</p>
+								</header>
+								<div class='card-content'>
+									{% if event.display_time %}
+										<div class='property'>
+											<div class='property-key'>Event Time</div>
+											<div class='event-time property-value'>{{event_time}}
+											</div>
+										</div>
+									{% endif %}
+									<div class='property'>
+										<div class='property-key'>Location</div>
+										<div class='event-location property-value'>
+											{{event.location}}
+										</div>
+									</div>
+									<div class='content event-description'>
+										{{event.description}}
+									</div>
+								</div>
+								{% if event.eventbrite %}
+									{% set event_id = "eventbrite-widget-modal-trigger-" ~ event.eventbrite %}
+									<footer class='card-footer'>
+										<button id="{{event_id}}" class='card-footer-item button is-link event-link' type="button">Sign Up</button>
+									</footer>
+									<!-- Noscript content for added SEO -->
+									<noscript>
+										<a href="https://www.eventbrite.com/e/test-event-tickets-{{event.eventbrite}}" rel="noopener noreferrer" target="_blank">Buy Tickets on Eventbrite</a>
+									</noscript>
+
+									<script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+
+									<script type="text/javascript">
+										var exampleCallback = function () {
+console.log('Order complete!');
+};
+
+window.EBWidgets.createWidget({
+widgetType: 'checkout',
+eventId: '{{ event.eventbrite }}',
+modal: true,
+modalTriggerElementId: "{{ event_id }}",
+onOrderComplete: exampleCallback
+});
+									</script>
+								{% endif %}
+							</div>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</section>
+{% endblock %}

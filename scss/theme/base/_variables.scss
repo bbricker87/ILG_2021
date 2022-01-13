@@ -8,6 +8,18 @@ $border-color: lighten($dark-color, 60%) !default;
 $bg-color: lighten($dark-color, 66%) !default;
 $body-font-color: lighten($dark-color, 5%) !default;
 
+$kombu-green: #344C39;
+$outer-space-crayola: #374143;
+$light-gray: #cbd7da;
+$granny-smith-apple: #85D696;
+$space-cadet: #263159;
+
+// bulma color overrides
+$grey-dark: $outer-space-crayola;
+$grey-light: $light-gray;
+$primary: $space-cadet;
+$link: $granny-smith-apple;
+
 // Layout
 $horiz-padding: 1rem;
 $vert-padding: 2rem 0 2rem;

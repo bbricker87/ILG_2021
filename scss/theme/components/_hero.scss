@@ -18,6 +18,11 @@
             &+.hero-body {
                 position: relative;
                 z-index: 11;
+
+                & .title,
+                & .subtitle {
+                    color: $white;
+                }
             }
         }
     }

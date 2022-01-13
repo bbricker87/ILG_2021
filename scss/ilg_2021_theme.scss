@@ -1,8 +1,8 @@
-// bulma
-@import '../node_modules/bulma/bulma.sass';
-
 // Core variables and mixins
 @import 'theme/base/variables';
+
+// bulma
+@import '../node_modules/bulma/bulma.sass';
 @import 'theme/base/normalize';
 @import 'theme/base/base';
 @import 'theme/layout/footer';
@@ -10,3 +10,5 @@
 @import 'theme/components/hero';
 
 @import 'theme/pages/about';
+@import 'theme/pages/events';
+@import 'theme/pages/membership';

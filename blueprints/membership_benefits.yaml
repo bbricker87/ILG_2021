@@ -1,0 +1,24 @@
+extends@: default
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        content:
+          fields:
+
+            Benefits:
+              type: section
+              title: Benefits
+              underline: true
+
+            header.benefits:
+              type: list
+              style: vertical
+              label: Membership Benefits
+              fields:
+                .description:
+                  type: textarea
+                  label: Description
+                  vertical: true

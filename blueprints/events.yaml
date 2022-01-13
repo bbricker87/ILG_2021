@@ -1,0 +1,47 @@
+extends@: default
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        content:
+          fields:
+
+            events:
+              type: section
+              title: Events
+              underline: true
+
+            header.events:
+              type: list
+              style: vertical
+              label: Events
+              fields:
+                .start:
+                  type: datetime
+                  label: Event start date
+                  help: PLUGIN_ADMIN.DATE_HELP
+                .end:
+                  type: datetime
+                  label: Event end date
+                  help: PLUGIN_ADMIN.DATE_HELP
+                .display_time:
+                  type: toggle
+                  label: Display time
+                  highlight: 1
+                  default: 1
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool
+                .eventbrite:
+                  type: text
+                  label: Eventbrite ID
+                .location:
+                  type: text
+                  label: Event location
+                .description:
+                  type: editor
+                  label: Event description
