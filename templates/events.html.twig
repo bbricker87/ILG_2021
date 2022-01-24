@@ -16,21 +16,21 @@
 								<header class='card-header'>
 									<p class='event-date card-header-title'>{{event.start | date("F d, Y")}}</p>
 								</header>
-								<div class='card-content'>
+								<div class='card-content columns is-multiline'>
 									{% if event.display_time %}
-										<div class='property'>
+										<div class='property column'>
 											<div class='property-key'>Event Time</div>
 											<div class='event-time property-value'>{{event_time}}
 											</div>
 										</div>
 									{% endif %}
-									<div class='property'>
+									<div class='property column has-text-right'>
 										<div class='property-key'>Location</div>
 										<div class='event-location property-value'>
 											{{event.location}}
 										</div>
 									</div>
-									<div class='content event-description'>
+									<div class='content event-description column is-full'>
 										{{event.description}}
 									</div>
 								</div>

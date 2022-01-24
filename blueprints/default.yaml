@@ -6,6 +6,26 @@ form:
       fields:
         content:
           fields:
+
+            header.content_section_size:
+              type: select
+              size: long
+              toggleable: true
+              label: Content section size
+              help: Size of the content section
+              default: default
+              options:
+                  default: 'Default - normal padding'
+                  is-small: 'Small - small padding'
+                  is-medium: 'Medium - medium padding'
+                  is-large: 'Large - large padding'
+                  is-halfheight: 'Half - half height of the page'
+                  is-fullheight: 'Full - full height of the page'
+
+            hero:
+              type: section
+              title: Hero
+              underline: true
             
             header.use_hero:
               type: toggle
@@ -44,7 +64,7 @@ form:
               size: long
               toggleable: true
               label: Hero size
-              help: Text to be displayed in the hero section
+              help: Size of the hero section
               default: default
               options:
                   default: 'Default - normal padding'

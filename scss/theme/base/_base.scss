@@ -11,6 +11,10 @@ body {
   max-height: 100vh;
 }
 
+html {
+  overflow-y: hidden;
+}
+
 body {
   padding: 0 0;
   overflow-x: hidden;

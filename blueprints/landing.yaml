@@ -1,0 +1,34 @@
+extends@: default
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        content:
+          fields:
+
+            landing:
+              type: section
+              title: Landing Items
+              underline: true
+
+            header.featured:
+              type: list
+              style: vertical
+              label: Featured Items
+              fields:
+                .start:
+                  type: datetime
+                  label: Start date
+                  help: Date to start displaying the item
+                .end:
+                  type: datetime
+                  label: End date
+                  help: Date to stop displaying the item
+                .title:
+                  type: text
+                  label: Title
+                .description:
+                  type: editor
+                  label: Content

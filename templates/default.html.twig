@@ -1,7 +1,11 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-	<section class='section'>
-		{{ page.content|raw }}
+	{% set section_size = page.header.content_section_size ? page.header.content_section_size : 'is-medium' %}
+	{% include 'partials/page-header.html.twig' %}
+	<section class='section {{section_size}}'>
+		<div class='container'>
+			{{ page.content|raw }}
+		</div>
 	</section>
 {% endblock %}
