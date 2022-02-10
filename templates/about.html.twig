@@ -4,6 +4,11 @@
 
 {% block content %}
 	{% include 'partials/page-header.html.twig' %}
+	<section class="section" id="about-ilg-section">
+		<div class='container'>
+			{{ page.content | raw }}
+		</div>
+	</section>
 	<section class="section" id="board-members-section">
 		<div class='container'>
 			<h1 class="title has-text-centered">Board Members</h1>

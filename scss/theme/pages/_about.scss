@@ -18,3 +18,11 @@
         overflow: hidden;
     }
 }
+
+#about-ilg-section {
+    margin: 2rem 0;
+
+    & h3:nth-child(n+2) {
+        margin: 1em 0 .25em;
+    }
+}

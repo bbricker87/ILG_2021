@@ -1,0 +1,18 @@
+#nav-menu {
+    & ul {
+        margin: 0;
+    }
+}
+
+.navbar-item {
+    & a {
+        color: $outer-space-crayola;
+    }
+
+    &.active,
+    &:hover {
+        & a {
+            color: $granny-smith-apple;
+        }
+    }
+}

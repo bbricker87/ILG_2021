@@ -5,6 +5,9 @@
 @import '../node_modules/bulma/bulma.sass';
 @import 'theme/base/normalize';
 @import 'theme/base/base';
+@import 'theme/base/typography';
+
+@import 'theme/layout/header';
 @import 'theme/layout/footer';
 
 @import 'theme/components/hero';
